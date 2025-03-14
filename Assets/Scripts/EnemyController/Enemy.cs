@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -13,6 +12,7 @@ public class Enemy : MonoBehaviour
 
     //Animations
     public Animator anim;
+    public bool IAnimPlay = false;
 
     //���� ������
     [SerializeField] Bar hearthsBarPlayer;
@@ -35,7 +35,7 @@ public class Enemy : MonoBehaviour
 
     void Start()
     {
-        anim = GetComponent<Animator>();
+        anim = anim.GetComponent<Animator>();
     }
 
     void Update()
@@ -49,6 +49,7 @@ public class Enemy : MonoBehaviour
             expBar.setHearthsRGB(ExpGet);
             
             levelExp.ProgressBar();
+            anim.StartPlayback();
             Destroy(gameObject);
             return;
         }
@@ -97,9 +98,21 @@ public class Enemy : MonoBehaviour
     {
         hearths -= DamageenemyWeapon;
         hearthsBarEnemy.setDamageRGB(2);
+        StartCoroutine(AnimationAttack());
         return;
     }
 
+    IEnumerator AnimationAttack()
+    {
+        IAnimPlay = true;
+        while(IAnimPlay)
+        {
+            anim.StopPlayback();
+            yield return new WaitForSeconds(1f);
+            anim.StartPlayback();
+            IAnimPlay = false;
+        }
+    }
     void DamageMana() 
     {
         hearths -= DamageenemyMana;

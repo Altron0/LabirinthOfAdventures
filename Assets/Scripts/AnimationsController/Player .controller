@@ -6,16 +6,10 @@ AnimatorController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Sword
+  m_Name: 'Player '
   serializedVersion: 5
   m_AnimatorParameters:
-  - m_Name: Blend
-    m_Type: 1
-    m_DefaultFloat: 0
-    m_DefaultInt: 0
-    m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
-  - m_Name: Beat
+  - m_Name: Walk
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
@@ -24,7 +18,7 @@ AnimatorController:
   m_AnimatorLayers:
   - serializedVersion: 5
     m_Name: Base Layer
-    m_StateMachine: {fileID: 7360727508635979357}
+    m_StateMachine: {fileID: 5740501312739669326}
     m_Mask: {fileID: 0}
     m_Motions: []
     m_Behaviours: []
@@ -34,14 +28,14 @@ AnimatorController:
     m_IKPass: 0
     m_SyncedLayerAffectsTiming: 0
     m_Controller: {fileID: 9100000}
---- !u!1102 &2393509016126130923
+--- !u!1102 &3938223991352393705
 AnimatorState:
   serializedVersion: 6
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: SwordAnimations
+  m_Name: Walk
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -54,13 +48,13 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 5950966d8cc1cda5a92a3fb614cf41cc, type: 2}
+  m_Motion: {fileID: 7400000, guid: a8eb58745d78fe06e9416650214eb9e9, type: 2}
   m_Tag: 
-  m_SpeedParameter: Blend
+  m_SpeedParameter: 
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
-  m_TimeParameter: Blend
---- !u!1107 &7360727508635979357
+  m_TimeParameter: 
+--- !u!1107 &5740501312739669326
 AnimatorStateMachine:
   serializedVersion: 6
   m_ObjectHideFlags: 1
@@ -70,15 +64,15 @@ AnimatorStateMachine:
   m_Name: Base Layer
   m_ChildStates:
   - serializedVersion: 1
-    m_State: {fileID: 2393509016126130923}
-    m_Position: {x: 40, y: -130, z: 0}
+    m_State: {fileID: 3938223991352393705}
+    m_Position: {x: 60, y: 0, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
   m_EntryTransitions: []
   m_StateMachineTransitions: {}
   m_StateMachineBehaviours: []
-  m_AnyStatePosition: {x: -130, y: 10, z: 0}
-  m_EntryPosition: {x: 140, y: 40, z: 0}
-  m_ExitPosition: {x: 30, y: 160, z: 0}
+  m_AnyStatePosition: {x: 290, y: 40, z: 0}
+  m_EntryPosition: {x: 70, y: 110, z: 0}
+  m_ExitPosition: {x: 800, y: 120, z: 0}
   m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}
-  m_DefaultState: {fileID: 2393509016126130923}
+  m_DefaultState: {fileID: 3938223991352393705}

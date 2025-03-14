@@ -19,10 +19,12 @@ public class Doors : MonoBehaviour
 
     [SerializeField] Text smeklPlayer;
 
-    //Задача на уровнение
+    //пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
     [SerializeField] Text text;
     [SerializeField] GameObject rechichZad;
-    
+
+    //Colors doors
+    [SerializeField] Material yellow;
 
     void OnTriggerEnter(Collider other)
     {
@@ -34,6 +36,11 @@ public class Doors : MonoBehaviour
             buttonOpenDoors.onClick.AddListener(CheckLevelOpenDoor);
 
             buttonZadRechich.onClick.AddListener(RechichZad);
+            /*foreach (MeshRenderer meshRenderer in GetComponentInParent<MeshRenderer>())
+            {
+                meshRenderer.TryGetComponent(out Material materials);
+
+            }*/
         }
     }
 
@@ -58,14 +65,14 @@ public class Doors : MonoBehaviour
         }
         else 
         {
-            text.text = "У тебя слишком маленький уровень!";
+            text.text = "пїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ!";
         }
     }
 
     void RechichZad()
     {
         rechichZad.SetActive(true);
-        text.text = "кто разработчик этой игры?";
+        text.text = "пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ?";
     }
 
     void CheckZagYes() 
