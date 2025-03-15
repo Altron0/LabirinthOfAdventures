@@ -35,9 +35,15 @@ public class Objects : MonoBehaviour
             if (Slot.slot == 0) 
             {
                 Slot.setObjects(index, sprite);
+                Slot.count += 1;
+                Slot.plusCount(Slot.count);
                 buttonGetPotion.gameObject.SetActive(false);
                 Destroy(gameObject);
                 return;
+            }
+            else if(Slot.count >= 1 & Slot.slot == index)
+            {
+                Slot.count += 1;
             }
         }
     }

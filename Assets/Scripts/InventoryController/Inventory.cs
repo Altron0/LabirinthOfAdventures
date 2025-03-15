@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,6 +7,7 @@ public class Inventory : MonoBehaviour
     public int slot = 0;
     public int count = 0;
     [SerializeField] public Sprite firstSprite;
+    [SerializeField] Text countImage;
 
     [SerializeField] Bar hearthBar;
     [SerializeField] Bar manaBar;
@@ -23,6 +23,13 @@ public class Inventory : MonoBehaviour
         slot = index;
     }
 
+    public void plusCount(int cn)
+    {
+        Debug.Log(cn);
+
+        countImage.text = (cn).ToString();
+        Debug.Log(countImage.text);
+    }
 
     void UseObject() 
     {
@@ -31,28 +38,27 @@ public class Inventory : MonoBehaviour
             case 1: 
                 {
                     manaBar.setHearthsRGB(3);
-                    TryGetComponent(out Image image);
-                    image.sprite = firstSprite;
-                    slot = 0;
+                    count -= 1;
+                    countImage.text = (Convert.ToInt32(countImage.text) - 1).ToString();
+                    if(count == 0) {
+                        TryGetComponent(out Image image);
+                        image.sprite = firstSprite;
+                        slot = 0;
+                    }
                     break; 
                 }
             case 2: 
                 {
-                    TryGetComponent(out Image image);
+                    count -= 1;
+                    countImage.text = (Convert.ToInt32(countImage.text) - 1).ToString();
                     hearthBar.setHearthsRGB(3);
-                    image.sprite = firstSprite;
-                    slot = 0;
+                    if(count == 0) {
+                        TryGetComponent(out Image image);
+                        image.sprite = firstSprite;
+                        slot = 0;
+                    }
                     break; 
                 }
-            case 3:
-            {
-                Shield.SetActive(true);
-                break;
-            }
-            case 4:
-            {
-                break;
-            }
         }
     }
 

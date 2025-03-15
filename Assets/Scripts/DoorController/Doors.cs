@@ -25,6 +25,10 @@ public class Doors : MonoBehaviour
 
     //Colors doors
     [SerializeField] Material yellow;
+    [SerializeField] Material brown;
+
+    [SerializeField] List<Material> materialList = new List<Material>();
+    [SerializeField] GameObject door;
 
     void OnTriggerEnter(Collider other)
     {
@@ -36,16 +40,30 @@ public class Doors : MonoBehaviour
             buttonOpenDoors.onClick.AddListener(CheckLevelOpenDoor);
 
             buttonZadRechich.onClick.AddListener(RechichZad);
-            /*foreach (MeshRenderer meshRenderer in GetComponentInParent<MeshRenderer>())
-            {
-                meshRenderer.TryGetComponent(out Material materials);
 
-            }*/
+
+            door.TryGetComponent(out MeshRenderer meshRenderer);
+
+            List<Material> materials = new List<Material>();
+
+            for(int i = 0; i < meshRenderer.materials.Length;i++){
+                materials.Add(yellow);
+            }
+            meshRenderer.SetMaterials(materials);
+
         }
     }
 
     void OnTriggerExit(Collider other)
     {
+        door.TryGetComponent(out MeshRenderer meshRenderer);
+
+        List<Material> materials = new List<Material>();
+
+        for(int i = 0; i < meshRenderer.materials.Length;i++){
+            materials.Add(brown);
+        }
+        meshRenderer.SetMaterials(materials);
         buttonOpenWindow.gameObject.SetActive(false);
     }
 
