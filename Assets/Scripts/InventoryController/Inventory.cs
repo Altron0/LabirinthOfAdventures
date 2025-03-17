@@ -18,7 +18,7 @@ public class Inventory : MonoBehaviour
     [SerializeField] GameObject Sword;
 
     //Safe Shield
-    [SerializeField] GameObject shieldSafe;
+    [SerializeField] Artefact shieldArtefact;
 
     public void setObjects(int index, Sprite sprite1) 
     {
@@ -66,11 +66,11 @@ public class Inventory : MonoBehaviour
             case 5:
             {
                 count--;
-                shieldSafe.SetActive(true);
-                StartCoroutine(ShieldUse());
                 TryGetComponent(out Image image);
                 image.sprite = firstSprite;
                 slot = 0;
+                count = 0;
+                shieldArtefact.StartsTimeArtefact();
                 break;
             }
         }
@@ -94,15 +94,4 @@ public class Inventory : MonoBehaviour
             }
         }
     }
-
-
-    IEnumerator ShieldUse()
-    {
-        yield return new WaitForSeconds(5f);
-        shieldSafe.SetActive(false);
-        StopCoroutine(ShieldUse());
-    }
-
-
-
 }

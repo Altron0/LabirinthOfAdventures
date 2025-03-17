@@ -1,28 +1,27 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class Artefact : MonoBehaviour
 {
-    [SerializeField] Button buttonArtefact;
+    [SerializeField] Enemy enemy;
+    [SerializeField] Enemy enemyBoss;
 
-    void OnTriggerEnter(Collider objects) {
-        if(objects.tag == "PLayer")
-        {
-            buttonArtefact.gameObject.SetActive(true);
-            buttonArtefact.onClick.AddListener(GetsArtefact);
-        }
-    }
-
-    void OnTriggerExit(Collider objects) {
-        if(objects.tag == "Player")
-        {
-            buttonArtefact.gameObject.SetActive(false);
-        }
-    }
-
-    void GetsArtefact()
+    public void StartsTimeArtefact()
     {
+        gameObject.SetActive(true);
+        enemy.Damageplayer = 1;
+        enemyBoss.Damageplayer = 3;
+        StartCoroutine(ArtefactUse());
+    }
 
+    IEnumerator ArtefactUse()
+    {
+        yield return new WaitForSeconds(5f);
+        gameObject.SetActive(false);
+        enemy.Damageplayer = 2;
+        enemyBoss.Damageplayer = 5;
+        StopCoroutine(ArtefactUse());
     }
 
 }
