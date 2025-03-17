@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -15,6 +16,9 @@ public class Inventory : MonoBehaviour
     //Game Objects
     [SerializeField] GameObject Shield;
     [SerializeField] GameObject Sword;
+
+    //Safe Shield
+    [SerializeField] GameObject shieldSafe;
 
     public void setObjects(int index, Sprite sprite1) 
     {
@@ -59,6 +63,16 @@ public class Inventory : MonoBehaviour
                     }
                     break; 
                 }
+            case 5:
+            {
+                count--;
+                shieldSafe.SetActive(true);
+                StartCoroutine(ShieldUse());
+                TryGetComponent(out Image image);
+                image.sprite = firstSprite;
+                slot = 0;
+                break;
+            }
         }
     }
 
@@ -80,4 +94,15 @@ public class Inventory : MonoBehaviour
             }
         }
     }
+
+
+    IEnumerator ShieldUse()
+    {
+        yield return new WaitForSeconds(5f);
+        shieldSafe.SetActive(false);
+        StopCoroutine(ShieldUse());
+    }
+
+
+
 }
